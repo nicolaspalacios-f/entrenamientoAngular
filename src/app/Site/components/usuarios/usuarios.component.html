@@ -1,50 +1,57 @@
-<div style="display: flex">
-  <div class="card" style="width: 30%; margin: 3%; align-items: center">
-    <img
-      class="card-img-top"
-      src="https://cdn-icons-png.flaticon.com/512/147/147142.png"
-      alt="Card image"
-      style="width: 50%"
-    />
-    <div class="card-body" style="align-content: center">
-      <div class="center">
-        <h4 class="card-title" style="text-align: center">John Doe</h4>
-        <p class="card-text" style="text-align: center">{{ id }}</p>
-        <input type="text" [(ngModel)]="id" />
-        <button (click)="updateId(id)">Cambiar id</button>
-      </div>
-    </div>
-  </div>
-  <div class="card" style="width: 30%; margin: 3%; align-items: center">
-    <img
-      class="card-img-top"
-      src="https://cdn-icons-png.flaticon.com/512/147/147142.png"
-      alt="Card image"
-      style="width: 50%"
-    />
-    <div class="card-body" style="align-content: center">
-      <div class="center">
-        <h4 class="card-title" style="text-align: center">John Doe</h4>
-        <p class="card-text" style="text-align: center">{{ id }}</p>
-        <input type="text" [(ngModel)]="id" />
-        <button (click)="updateId(id)">Cambiar id</button>
-      </div>
-    </div>
-  </div>
-  <div class="card" style="width: 30%; margin: 3%; align-items: center">
-    <img
-      class="card-img-top"
-      src="https://cdn-icons-png.flaticon.com/512/147/147142.png"
-      alt="Card image"
-      style="width: 50%"
-    />
-    <div class="card-body" style="align-content: center">
-      <div class="center">
-        <h4 class="card-title" style="text-align: center">John Doe</h4>
-        <p class="card-text" style="text-align: center">{{ id }}</p>
-        <input type="text" [(ngModel)]="id" />
-        <button (click)="updateId(id)">Cambiar id</button>
-      </div>
-    </div>
-  </div>
+
+
+<table class="table table-striped" style="margin-left: 20%; ">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Nombre</th>
+
+    <button style=" color: black; margin: 2px; width:136px" class="btn btn-outline-primary" (click)="basicCollapse.toggle()" [attr.aria-expanded]="!basicCollapse.collapsed">Agregar Usuario</button>
+    <tr mdbCollapse #basicCollapse="mdbCollapse">
+      <th></th>
+      <td ><input style="width: 200px;" #Nombre placeholder="Ingrese nombre usuario"/></td>
+      <button  class="btn btn-outline-primary" style="width:134px" (click)="agregar(Nombre.value)">Confirmar</button>
+
+    </tr>
+    <tr mdbCollapse #basicCollapseEdit="mdbCollapse">
+      <th><input type="number" style="width: 70px;" #Id></th>
+      <td ><input style="width: 100px;" #NombreEditar/></td>
+      <button  class="btn btn-outline-primary" style="width:134px" (click)="editarUsuario(Id.value,NombreEditar.value)" >Confirmar</button>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let usuario of usuarios">
+      <th scope="row" #IdEliminar id="{{ usuario.id }}">{{ usuario.id }} </th>
+      <td style=>{{ usuario.nombre }}</td>
+
+      <button style=" color: black; margin: 2px; width:70px;" class="btn btn-danger btn-outline-danger" (click)="eliminar(IdEliminar.id)">Eliminar</button>
+      <button style=" color: black; margin: 2px; width:63px" class="btn btn-outline-primary" (click)="basicCollapseEdit.toggle()" [attr.aria-expanded]="!basicCollapse.collapsed">Editar</button>
+    </tr>
+  </tbody>
+</table>
+
+<div
+  class="d-flex justify-content-between p-2"
+  style="margin-left: 15%; margin-right: 20%"
+>
+  <ngb-pagination
+    [collectionSize]="collectionSize"
+    [(page)]="page"
+    [pageSize]="pageSize"
+    (change)="refreshCountries()"
+  >
+  </ngb-pagination>
+
+
+  <select
+    class="form-select"
+    style="width: auto"
+    [(ngModel)]="pageSize"
+    (change)="refreshCountries()"
+  >
+    <option [ngValue]="2">2 items per page</option>
+    <option [ngValue]="4">4 items per page</option>
+    <option [ngValue]="8">8 items per page</option>
+  </select>
 </div>

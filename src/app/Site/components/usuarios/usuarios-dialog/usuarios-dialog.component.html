@@ -1,0 +1,5 @@
+<p>{{ usuario.nombre }}</p>
+<p>{{ usuario.id }}</p>
+<input type="text" id="input" #newItem />
+<button (click)="agregar(newItem.value)">Añadir</button>
+<input type="text" id="input" (change)="getId(id)" [(ngModel)]="id" />

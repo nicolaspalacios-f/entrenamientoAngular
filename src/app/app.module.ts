@@ -10,6 +10,9 @@ import { FooterComponent } from './Site/layout/footer/footer.component';
 import { BaseComponent } from './Site/layout/base/base.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { UsuariosDialogComponent } from './Site/components/usuarios/usuarios-dialog/usuarios-dialog.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
 
 @NgModule({
   declarations: [
@@ -19,8 +22,16 @@ import { FormsModule } from '@angular/forms';
     BaseComponent,
     ErrorComponent,
     UsuariosComponent,
+    UsuariosDialogComponent,
   ],
-  imports: [BrowserModule, FormsModule, AppRoutingModule, NgbModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    NgbModule,
+    HttpClientModule,
+    MdbCollapseModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
